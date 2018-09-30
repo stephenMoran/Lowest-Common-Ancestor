@@ -4,14 +4,14 @@
 class Node:
     #constructor
      def __init__(self, key):
-     self.right = None
-     self.left = None
-     self.key = value
+         self.right = None
+         self.left = None
+         self.key = key
 
 # Recursive function to find path from root to a given node
 def findPath( root, path, keyToFind):
     #check if root is null
-    if root is None
+    if root is None:
             return false
 
     #begin path array with root

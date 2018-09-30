@@ -1,6 +1,11 @@
-import area
+import pytest
+import lca
 
-def test_area():
-    totalArea = area.find_area()
-    print(totalArea)
-    assert totalArea == 17.320508075688775
+
+#simple binary tree test
+def test_pathFinder1():
+    path = []
+    root = lca.Node(1)
+    root.left = lca.Node(2)
+    root.right = lca.Node(3)
+    assert lca.findPath == true
