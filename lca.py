@@ -12,7 +12,7 @@ class Node:
 def findPath( root, path, keyToFind):
     #check if root is null
     if root is None:
-            return false
+            return False
 
     #begin path array with root
     path.append(root.key)
