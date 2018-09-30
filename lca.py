@@ -1,20 +1,31 @@
-# Python Program to find the area of triangle
+# Python Program to find the lowest common ancestor (LCA) of a Binary Tree
 
-def find_area():
-    a = 5
-    b = 8
-    c = 7
+#Binary tree node
+class Node:
+    #constructor
+     def __init__(self, key):
+     self.right = None
+     self.left = None
+     self.key = value
 
-# Uncomment below to take inputs from the user
-# a = float(input('Enter first side: '))
-# b = float(input('Enter second side: '))
-# c = float(input('Enter third side: '))
+# Recursive function to find path from root to a given node
+def findPath( root, path, keyToFind):
+    #check if root is null
+    if root is None
+            return false
 
-# calculate the semi-perimeter
-    s = (a + b + c) / 2
+    #begin path array with root
+    path.append(root.value)
 
-# calculate the area
-    area = (s*(s-a)*(s-b)*(s-c)) ** 0.5
-    print('The area of the triangle is %0.2f' %area)
+    # See if the k is same as root's key
+    if root.key == k :
+        return True
 
-    return area
+    #check if key is found in left or right subtrees
+    if ((root.left != None and findPath(root.left, path, keyToFind)) or
+            (root.right!= None and findPath(root.right, path, keyToFind))):
+        return True
+
+    #if path cannot be found empty the array and exit
+    path.pop()
+    return False
