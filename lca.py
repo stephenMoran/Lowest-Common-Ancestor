@@ -15,10 +15,10 @@ def findPath( root, path, keyToFind):
             return false
 
     #begin path array with root
-    path.append(root.value)
+    path.append(root.key)
 
     # See if the k is same as root's key
-    if root.key == k :
+    if root.key == keyToFind :
         return True
 
     #check if key is found in left or right subtrees
