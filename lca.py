@@ -7,6 +7,7 @@ class Node:
          self.right = None
          self.left = None
          self.key = key
+         #no need for nodes to store values in this use case
 
 # Recursive function to find path from root to a given node
 def findPath( root, path, keyToFind):
