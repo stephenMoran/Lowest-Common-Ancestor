@@ -57,6 +57,7 @@ def test_lcaFind2():
 
 #LCA test 3
 #Testing findLCA with larger tree
+def test_lcaFind3():
     root = lca.Node(1)
     root.left = lca.Node(2)
     root.right = lca.Node(3)
@@ -65,3 +66,13 @@ def test_lcaFind2():
     root.right.left = lca.Node(6)
     root.right.right = lca.Node(7)
     assert lca.findLCA(root, 5, 7) == 1
+
+def test_lcaFind4():
+#LCA test 4
+#Testing findLCA with negative keys
+    root = lca.Node(1)
+    root.left = lca.Node(2)
+    root.right = lca.Node(3)
+    root.left.left = lca.Node(4)
+    root.left.right = lca.Node(5)
+    assert lca.findLCA(root, -1 , -5) == -1
