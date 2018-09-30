@@ -1,5 +1,6 @@
-import pytest
 import lca
+import pytest
+
 
 #pathFind test 1
 #simple binary tree test. Testing right subtree
