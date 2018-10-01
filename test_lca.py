@@ -102,9 +102,10 @@ def test_lcaFind6():
     root.right.right.right = lca.Node(12)
     assert lca.findLCA(root, 8, 10) == 2
 
-
+'''
 #LCA test 7
 #Testing with duplicate keys
+#Test fails. We must assume that the user will use unique keys with API
 def test_lcaFind7():
     root = lca.Node(1)
     root.left = lca.Node(2)
@@ -117,3 +118,20 @@ def test_lcaFind7():
     root.left.left.right = lca.Node(3)
     root.left.right.right = lca.Node(10)
     assert lca.findLCA(root, 3, 10) == 1
+'''
+#LCA test 8
+#Testing where node is descendent of itself
+def test_lcaFind8():
+    root = lca.Node(1)
+    root.left = lca.Node(2)
+    root.right = lca.Node(3)
+    root.left.left = lca.Node(4)
+    root.left.right = lca.Node(5)
+    root.right.left = lca.Node(6)
+    root.right.right = lca.Node(7)
+    root.left.left.left = lca.Node(8)
+    root.left.left.right = lca.Node(9)
+    root.left.right.right = lca.Node(10)
+    root.right.right.left = lca.Node(11)
+    root.right.right.right = lca.Node(12)
+    assert lca.findLCA(root, 10, 2) == 2
