@@ -135,3 +135,11 @@ def test_lcaFind8():
     root.right.right.left = lca.Node(11)
     root.right.right.right = lca.Node(12)
     assert lca.findLCA(root, 10, 2) == 2
+
+#LCA test 9
+#Testing incest case where we try find the LCA using the same node for both parameters
+def test_lcaFind9():
+    root = lca.Node(1)
+    root.left = lca.Node(2)
+    root.right = lca.Node(3)
+    assert lca.findLCA(root, 2, 2) == 2
