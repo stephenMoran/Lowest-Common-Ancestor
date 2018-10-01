@@ -84,3 +84,20 @@ def test_lcaFind4():
 def test_lcaFind5():
     root = None
     assert lca.findLCA(root, 1 , 8) == -1
+
+#LCA test 6
+#Testing with larger tree
+def test_lcaFind4():
+    root = lca.Node(1)
+    root.left = lca.Node(2)
+    root.right = lca.Node(3)
+    root.left.left = lca.Node(4)
+    root.left.right = lca.Node(5)
+    root.right.left = lca.Node(6)
+    root.right.right = lca.Node(7)
+    root.left.left.left = lca.Node(8)
+    root.left.left.right = lca.Node(9)
+    root.left.right.right = lca.Node(10)
+    root.right.right.left = lca.Node(11)
+    root.right.right.right = lca.Node(12)
+    assert lca.findLCA(root, 8, 10) == 2
