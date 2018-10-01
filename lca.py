@@ -1,5 +1,7 @@
 # Python Program to find the lowest common ancestor (LCA) of a Binary Tree
 #O(n) runtime
+#Assumptions: nobod inserts duplicate keys into the binary tree
+
 #Binary tree node
 class Node:
     #constructor
@@ -10,6 +12,7 @@ class Node:
          #no need for nodes to store values in this use case
 
 # Recursive function to find path from root to a given node
+#Parameters: root node, path array and the key to be found
 def findPath( root, path, keyToFind):
     #check if root is null
     if root is None:
@@ -22,7 +25,7 @@ def findPath( root, path, keyToFind):
     if root.key == keyToFind :
         return True
 
-    #check if key is found in left or right subtrees
+    #check if key is found in left or right subtrees (recursive)
     if ((root.left != None and findPath(root.left, path, keyToFind)) or
             (root.right!= None and findPath(root.right, path, keyToFind))):
         return True
@@ -32,23 +35,25 @@ def findPath( root, path, keyToFind):
     return False
 
 
-#Fucntion that determiens the lowest common ancestor
+#Function that determiens the lowest common ancestor
+#Parameters :  root node , node 1 and node 2
 def findLCA(root, n1, n2):
 
-    # To store paths to n1 and n2 fromthe root
+    # To store paths to n1 and n2 from the root
     path1 = []
     path2 = []
 
-    #If paths cannot be found exit
+    #If paths cannot be found exits
+    #Populates path arrays in order to evaluate condition
     if (not findPath(root, path1, n1) or not findPath(root, path2, n2)):
         return -1
 
-    # Compare the paths to get the first different value
+    # Loop through and compare the path arrays
     i = 0
     while(i < len(path1) and i < len(path2)):
         #when paths diverge we know that the LCA has been passed
         if path1[i] != path2[i]:
             break
         i += 1
-    #backstep to find LCA va;ue and return
+    #backstep to find LCA value and return
     return path1[i-1]
