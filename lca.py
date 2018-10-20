@@ -9,21 +9,20 @@ class DirectedGraph:
 
     #Class to represent graph nodes
     class Node:
+        #Node constructor
         def __init__( self, data ):
             self.data = data
             self.links = []
+        #Node method
         def pointsTo( self, node ):
             self.links.append( node )
             DirectedGraph.linkCount += 1
 
+    #Directed Graph constructor
+    def __init__( self ):
+        self.nodes = []
+        self.nodeCount = 0
     #Directed Graph class methods
-    def pointsTo( self, node ):
-            self.links.append( node )
-            DirectedGraph.linkCount += 1
-    #Creating links
-    def pointsTo( self, node ):
-      self.links.append( node )
-      DirectedGraph.linkCount += 1
     #Adds new node to graph
     def newNode( self, data ):
         node = self.Node( data )
