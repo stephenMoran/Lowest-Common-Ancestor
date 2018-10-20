@@ -4,7 +4,13 @@ import pytest
 
 #pathFind test 1
 #simple binary tree test. Testing right subtree
+"""
+Specific function tests
 def test_pathFinder1():
+    dg = DirectedGraph()
+    n0 = dg.newNode(1)
+    n1 = dg.newNode(2)
+    n2 = dg.newNode(3)
     path = []
     root = lca.Node(1)
     root.left = lca.Node(2)
@@ -39,14 +45,19 @@ def test_pathFinder4():
     root.right.right = lca.Node(6)
     root.right.left = lca.Node(7)
     assert lca.findPath(root, path , 7) == True
+"""
 
 #LCA test 1
 #Testing with simple binary tree
 def test_lcaFind1():
-    root = lca.Node(1)
-    root.left = lca.Node(2)
-    root.right = lca.Node(3)
-    assert lca.findLCA(root, 2, 3) == 1
+    dg = DirectedGraph()
+    n0 = dg.newNode(1)
+    n1 = dg.newNode(2)
+    n2 = dg.newNode(3)
+    n0.pointsTo(n1)
+    n0.pointsTo(n2)
+
+    assert lca.findLCA(n1, n2) == 1
 
 #LCA test 2
 #Testing findLCA with no paths available
