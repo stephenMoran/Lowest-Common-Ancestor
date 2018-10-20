@@ -7,27 +7,30 @@ class DirectedGraph:
 
     linkCount = 0
 
-
+    #Class to represent graph nodes
     class Node:
         def __init__( self, data ):
             self.data = data
             self.links = []
+        def pointsTo( self, node ):
+            self.links.append( node )
+            DirectedGraph.linkCount += 1
 
+    #Directed Graph class methods
+    def pointsTo( self, node ):
+            self.links.append( node )
+            DirectedGraph.linkCount += 1
+    #Creating links
     def pointsTo( self, node ):
       self.links.append( node )
       DirectedGraph.linkCount += 1
-
-
-    def __init__( self ):
-        self.nodes = []
-        self.nodeCount = 0
-
+    #Adds new node to graph
     def newNode( self, data ):
         node = self.Node( data )
         self.nodes.append( node )
         self.nodeCount += 1
         return node
-        
+    #visualisation of graph
     def __repr__( self ):
         result = ""
         for node in self.nodes:
@@ -37,4 +40,3 @@ class DirectedGraph:
 
 
 #If two LCAS give the first found result
-#

@@ -51,46 +51,47 @@ def test_pathFinder4():
 #Testing with simple binary tree
 def test_lcaFind1():
     dg = DirectedGraph()
-    n0 = dg.newNode(1)
-    n1 = dg.newNode(2)
-    n2 = dg.newNode(3)
-    n0.pointsTo(n1)
-    n0.pointsTo(n2)
+    n1 = dg.newNode(1)
+    n2 = dg.newNode(2)
+    n3 = dg.newNode(3)
+    n1.pointsTo(n3)
+    n1.pointsTo(n2)
 
-    assert lca.findLCA(n1, n2) == 1
+    assert lca.findLCA(n2, n3) == 1
 
 #LCA test 2
 #Testing findLCA with no paths available
 def test_lcaFind2():
-    root = lca.Node(1)
-    root.left = lca.Node(2)
-    root.right = lca.Node(3)
-    assert lca.findLCA(root, 4, 3) == -1
+    dg = DirectedGraph()
+    n1 = dg.newNode(1)
+    n2 = dg.newNode(2)
+    n3 = dg.newNode(3)
+    n1.pointsTo(n3)
+    n1.pointsTo(n2)
+
+    assert lca.findLCA(n4, n2) == -1
 
 #LCA test 3
 #Testing findLCA with larger tree
 def test_lcaFind3():
-    root = lca.Node(1)
-    root.left = lca.Node(2)
-    root.right = lca.Node(3)
-    root.left.left = lca.Node(4)
-    root.left.right = lca.Node(5)
-    root.right.left = lca.Node(6)
-    root.right.right = lca.Node(7)
-    assert lca.findLCA(root, 5, 7) == 1
+    dg = DirectedGraph()
+    n1 = dg.newNode(1)
+    n2 = dg.newNode(2)
+    n3 = dg.newNode(3)
+    n4 = dg.newNode(4)
+    n5 = dg.newNode(5)
+    n6 = dg.newNode(6)
+    n7 = dg.newNode(7)
+    n1.pointsTo(n2)
+    n1.pointsTo(n3)
+    n2.pointsTo(n4)
+    n2.pointsTo(n5)
+    n3.pointsTo(n6)
+    n3.pointsTo(n7)
+    assert lca.findLCA(n5, n7) == 1
 
 
 #LCA test 4
-#Testing findLCA with negative keys
-def test_lcaFind4():
-    root = lca.Node(1)
-    root.left = lca.Node(2)
-    root.right = lca.Node(3)
-    root.left.left = lca.Node(4)
-    root.left.right = lca.Node(5)
-    assert lca.findLCA(root, -1 , -5) == -1
-
-#LCA test 5
 #Testing findLCA with null root
 def test_lcaFind5():
     root = None
