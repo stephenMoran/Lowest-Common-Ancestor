@@ -6,7 +6,6 @@
 class DirectedGraph:
 
     linkCount = 0
-
     #Class to represent graph nodes
     class Node:
         #Node constructor
@@ -46,13 +45,22 @@ class DirectedGraph:
     #If two LCAS give the first found result
     def findLCA(self, x, y):
         parX = self.bfs(x)
-        print (parX)
+        for i in parX:
+            print(i.data)
         parY = self.bfs(y)
-        print (parY)
-        commonNodes = set(parX) - set(parY)
-        print (commonNodes)
-        lca = 2
-        return lca
+        for j in parY:
+            print(j.data)
+        commonNodes = self.common_elements(parX, parY)
+        if commonNodes != []:
+            maxDist = -1
+            lca = 0
+            for i in commonNodes:
+                if i.distToRoot > maxDist:
+                    lca = i.data
+            return lca
+        else:
+            return -1
+
 
 
     #Use bfs to find all parents for x and y
@@ -67,3 +75,6 @@ class DirectedGraph:
                     visited.append(i)
                     queue.append(i)
         return visited
+
+    def common_elements(self, list1, list2):
+        return [element for element in list1 if element in list2]

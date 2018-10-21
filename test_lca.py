@@ -136,7 +136,7 @@ def test_lcaFind7():
     root.left.right.right = lca.Node(10)
     assert lca.findLCA(root, 3, 10) == 1
 '''
-#LCA test 6
+#LCA test 5
 #Testing where node is descendent of itself
 def test_lcaFind8():
     dg = lca.DirectedGraph()
@@ -165,7 +165,7 @@ def test_lcaFind8():
     n6.pointsTo(n12)
     assert dg.findLCA(n10, n2) == 2
 
-#LCA test 7
+#LCA test 6
 #Testing incest case where we try find the LCA using the same node for both parameters
 def test_lcaFind9():
     dg = lca.DirectedGraph()
