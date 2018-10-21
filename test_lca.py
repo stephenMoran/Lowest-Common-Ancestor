@@ -35,6 +35,45 @@ def test_lcaFind2():
     assert dg.findLCA(n4, n2) == -1
 
 """
+
+
+#**COMMON_ELEMENTS TESTS**
+
+#commonElements test 1
+#Testing with normal case
+def test_common1():
+    dg = lca.DirectedGraph()
+
+    list1 = [1,2,3,4,5,6]
+    list2 = [6,5,4,3,2]
+
+    common = dg.commonElements(list1, list2)
+    assert common == [2,3,4,5,6]
+
+#commonElements test 2
+#Testing with no common elements
+def test_common2():
+    dg = lca.DirectedGraph()
+
+    list1 = [1,2,3,4,5,6]
+    list2 = [7,8,9]
+
+    common = dg.commonElements(list1, list2)
+    assert common == []
+
+#commonElements test
+#Testing with empty lists
+def test_common3():
+    dg = lca.DirectedGraph()
+
+    list1 = []
+    list2 = []
+
+    common = dg.commonElements(list1, list2)
+    assert common == []
+
+#**LCA FUNCTION TESTS**
+
 #LCA test 1
 #Testing with simple binary tree
 def test_lcaFind1():

@@ -1,6 +1,5 @@
-# Python Program to find the lowest common ancestor (LCA) of a Binary Tree
-#O(n) runtime
-#Assumptions: nobod inserts duplicate keys into the binary tree
+# Python Program to find the lowest common ancestor (LCA) of a directed acyclic graph
+
 
 #Class to represent a graph
 class DirectedGraph:
@@ -57,7 +56,7 @@ class DirectedGraph:
         for j in parY:
             print(j.data)
         #List of common parent ancestors
-        commonNodes = self.common_elements(parX, parY)
+        commonNodes = self.commonElements(parX, parY)
 
         if commonNodes != []:
             maxDist = -1
@@ -96,5 +95,5 @@ class DirectedGraph:
     #Find common elements function
     #Parameters - two lists of nodes
     #Return - List containing the intersection of the two lists
-    def common_elements(self, list1, list2):
+    def commonElements(self, list1, list2):
         return [element for element in list1 if element in list2]
