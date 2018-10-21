@@ -55,7 +55,11 @@ class DirectedGraph:
             maxDist = -1
             lca = 0
             for i in commonNodes:
+                print("\n")
+                print(i.data)
+                print(i.distToRoot)
                 if i.distToRoot > maxDist:
+                    maxDist = i.distToRoot
                     lca = i.data
             return lca
         else:
