@@ -12,6 +12,7 @@ class DirectedGraph:
         def __init__( self, data ):
             self.data = data
             self.linksTo = []
+            #maintaining linksFrom so a full list of parent nodes can be created for each node
             self.linksFrom = []
             self.distToRoot = 0
         #Node method
@@ -38,19 +39,26 @@ class DirectedGraph:
         result = ""
         for node in self.nodes:
             for link in node.linksTo:
-                result += "{0} --> {1}\n".format( node.data, link.data )
+                result += "{0} --> {1} \n".format( node.data, link.data )
         return result
 
 
-    #If two LCAS give the first found result
+    #find Lowest Common Ancestor function
+    #Parameters - two nodes X and Y
+    #Return - data held in LCA node
+    #Will only give one answer even when there are two nodes that could be the LCA
     def findLCA(self, x, y):
+        #find list of ancestors of node X
         parX = self.bfs(x)
         for i in parX:
             print(i.data)
+        #find list of ancestors of node Y
         parY = self.bfs(y)
         for j in parY:
             print(j.data)
+        #List of common parent ancestors
         commonNodes = self.common_elements(parX, parY)
+
         if commonNodes != []:
             maxDist = -1
             lca = 0
@@ -58,6 +66,7 @@ class DirectedGraph:
                 print("\n")
                 print(i.data)
                 print(i.distToRoot)
+                #if new lca found, update
                 if i.distToRoot > maxDist:
                     maxDist = i.distToRoot
                     lca = i.data
@@ -67,7 +76,10 @@ class DirectedGraph:
 
 
 
-    #Use bfs to find all parents for x and y
+    #Breadth First search to find all ancestors of a given node
+    #Parameters - root node to begin the search from
+    #Return - list of visited nodes
+    #For this solution, the given node is the root and paths are found to all parent nodes
     def bfs(self, start):
         visited = []
         queue = [start]
@@ -78,9 +90,11 @@ class DirectedGraph:
                 if i not in visited:
                     visited.append(i)
                     queue.append(i)
-
         visited.append(start)
         return visited
 
+    #Find common elements function
+    #Parameters - two lists of nodes
+    #Return - List containing the intersection of the two lists
     def common_elements(self, list1, list2):
         return [element for element in list1 if element in list2]

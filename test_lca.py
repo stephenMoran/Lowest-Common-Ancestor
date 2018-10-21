@@ -2,51 +2,39 @@ import lca
 import pytest
 
 
-#pathFind test 1
-#simple binary tree test. Testing right subtree
 """
-Specific function tests
-def test_pathFinder1():
-    dg = DirectedGraph()
-    n0 = dg.newNode(1)
-    n1 = dg.newNode(2)
-    n2 = dg.newNode(3)
-    path = []
-    root = lca.Node(1)
-    root.left = lca.Node(2)
-    root.right = lca.Node(3)
-    assert lca.findPath(root, path, 3) == True
 
-#pathFind test 2
-#simple binary tree test. Testing left subtree
-def test_pathFinder2():
-    path = []
-    root = lca.Node(1)
-    root.left = lca.Node(2)
-    root.right = lca.Node(3)
-    assert lca.findPath(root, path, 2) == True
+Tests that show findLCA assumptions
 
-#pathFind test 3
-#Testing with null root
-def test_pathFinder3():
-    path = []
-    root = None
-    assert lca.findPath(root, path, 3) == False
-
-#pathFind test 4
-#Testing with larger tree
-def test_pathFinder4():
-    path = []
+#Testing with duplicate keys
+#Test fails. We must assume that the user will use unique keys with API
+def test_lcaFind7():
     root = lca.Node(1)
     root.left = lca.Node(2)
     root.right = lca.Node(3)
     root.left.left = lca.Node(4)
     root.left.right = lca.Node(5)
-    root.right.right = lca.Node(6)
-    root.right.left = lca.Node(7)
-    assert lca.findPath(root, path , 7) == True
-"""
+    root.right.left = lca.Node(6)
+    root.right.right = lca.Node(7)
+    root.left.left.left = lca.Node(8)
+    root.left.left.right = lca.Node(3)
+    root.left.right.right = lca.Node(10)
+    assert lca.findLCA(root, 3, 10) == 1
 
+
+#Testing findLCA with no paths available
+#Test fails. Error is thrown. We must assume the user will not try to pass a variable that
+def test_lcaFind2():
+    dg = lca.DirectedGraph()
+    n1 = dg.newNode(1)
+    n2 = dg.newNode(2)
+    n3 = dg.newNode(3)
+    n1.pointsTo(n3)
+    n1.pointsTo(n2)
+
+    assert dg.findLCA(n4, n2) == -1
+
+"""
 #LCA test 1
 #Testing with simple binary tree
 def test_lcaFind1():
@@ -59,17 +47,6 @@ def test_lcaFind1():
 
     assert dg.findLCA(n2, n3) == 1
 
-#LCA test 2
-#Testing findLCA with no paths available
-def test_lcaFind2():
-    dg = lca.DirectedGraph()
-    n1 = dg.newNode(1)
-    n2 = dg.newNode(2)
-    n3 = dg.newNode(3)
-    n1.pointsTo(n3)
-    n1.pointsTo(n2)
-
-    assert dg.findLCA(n4, n2) == -1
 
 #LCA test 3
 #Testing findLCA with extra level tree
@@ -119,23 +96,7 @@ def test_lcaFind6():
     n6.pointsTo(n12)
     assert dg.findLCA(n8, n10) == 2
 
-'''
-#LCA test 5
-#Testing with duplicate keys
-#Test fails. We must assume that the user will use unique keys with API
-def test_lcaFind7():
-    root = lca.Node(1)
-    root.left = lca.Node(2)
-    root.right = lca.Node(3)
-    root.left.left = lca.Node(4)
-    root.left.right = lca.Node(5)
-    root.right.left = lca.Node(6)
-    root.right.right = lca.Node(7)
-    root.left.left.left = lca.Node(8)
-    root.left.left.right = lca.Node(3)
-    root.left.right.right = lca.Node(10)
-    assert lca.findLCA(root, 3, 10) == 1
-'''
+
 #LCA test 5
 #Testing where node is descendent of itself
 def test_lcaFind8():
