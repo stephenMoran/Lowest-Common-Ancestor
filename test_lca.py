@@ -57,7 +57,7 @@ def test_lcaFind1():
     n1.pointsTo(n3)
     n1.pointsTo(n2)
 
-    assert lca.findLCA(n2, n3) == 1
+    assert dg.findLCA(n2, n3) == 1
 
 #LCA test 2
 #Testing findLCA with no paths available
@@ -69,7 +69,7 @@ def test_lcaFind2():
     n1.pointsTo(n3)
     n1.pointsTo(n2)
 
-    assert lca.findLCA(n4, n2) == -1
+    assert dg.findLCA(n4, n2) == -1
 
 #LCA test 3
 #Testing findLCA with extra level tree
@@ -88,7 +88,7 @@ def test_lcaFind3():
     n2.pointsTo(n5)
     n3.pointsTo(n6)
     n3.pointsTo(n7)
-    assert lca.findLCA(n5, n7) == 1
+    assert dg.findLCA(n5, n7) == 1
 
 #LCA test 4
 #Testing with extra level tree
@@ -117,7 +117,7 @@ def test_lcaFind6():
     n5.pointsTo(n10)
     n5.pointsTo(n11)
     n6.pointsTo(n12)
-    assert lca.findLCA(n8, n10) == 2
+    assert dg.findLCA(n8, n10) == 2
 
 '''
 #LCA test 5
@@ -163,7 +163,7 @@ def test_lcaFind8():
     n5.pointsTo(n10)
     n5.pointsTo(n11)
     n6.pointsTo(n12)
-    assert lca.findLCA(n10, n2) == 2
+    assert dg.findLCA(n10, n2) == 2
 
 #LCA test 7
 #Testing incest case where we try find the LCA using the same node for both parameters
@@ -174,4 +174,4 @@ def test_lcaFind9():
     n3 = dg.newNode(3)
     n1.pointsTo(n3)
     n1.pointsTo(n2)
-    assert lca.findLCA(n2, n2) == 2
+    assert dg.findLCA(n2, n2) == 2

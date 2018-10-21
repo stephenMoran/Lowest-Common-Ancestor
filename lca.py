@@ -19,7 +19,7 @@ class DirectedGraph:
         def pointsTo( self, node ):
             self.linksTo.append( node )
             DirectedGraph.linkCount += 1
-            node.linksFrom = self
+            node.linksFrom.append(self)
             if node.distToRoot == 0 or node.distToRoot > self.distToRoot + 1:
                 node.distToRoot = self.distToRoot + 1
 
@@ -38,29 +38,32 @@ class DirectedGraph:
     def __repr__( self ):
         result = ""
         for node in self.nodes:
-            for link in node.links:
+            for link in node.linksTo:
                 result += "{0} --> {1}\n".format( node.data, link.data )
         return result
 
 
-#If two LCAS give the first found result
-def findLCA(self, x, y):
+    #If two LCAS give the first found result
+    def findLCA(self, x, y):
+        parX = self.bfs(x)
+        print (parX)
+        parY = self.bfs(y)
+        print (parY)
+        commonNodes = set(parX) - set(parY)
+        print (commonNodes)
+        lca = 2
+        return lca
 
-    parX = bfs(self, x)
-    parY = bfs(self, Y)
-    console.log("hello")
-    return lca
 
-
-#Use bfs to find all parents for x and y
-def bfs(graph, start):
-    visited = []
-    queue = [start]
-    level = 0
-    while queue:
-        vertex = queue.pop(0)
-        for i in vertex.linksFrom:
-            if i not in visited:
-                visited.append(i)
-                queue.append(i)
-    return visited
+    #Use bfs to find all parents for x and y
+    def bfs(self, start):
+        visited = []
+        queue = [start]
+        level = 0
+        while queue:
+            vertex = queue.pop(0)
+            for i in vertex.linksFrom:
+                if i not in visited:
+                    visited.append(i)
+                    queue.append(i)
+        return visited
