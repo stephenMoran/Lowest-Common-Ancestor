@@ -14,14 +14,14 @@ class DirectedGraph:
             self.data = data
             self.linksTo = []
             self.linksFrom = []
-            distToRoot = 0
+            self.distToRoot = 0
         #Node method
         def pointsTo( self, node ):
             self.linksTo.append( node )
             DirectedGraph.linkCount += 1
             node.linksFrom = self
-            if(node.distToRoot == 0 or node.distToRoot > self.distToRoot + 1)
-                node.distToRoot = self.distToRoot + 1)
+            if node.distToRoot == 0 or node.distToRoot > self.distToRoot + 1:
+                node.distToRoot = self.distToRoot + 1
 
     #Directed Graph constructor
     def __init__( self ):
@@ -44,22 +44,23 @@ class DirectedGraph:
 
 
 #If two LCAS give the first found result
+def findLCA(self, x, y):
 
-def findLCA(x, y):
+    parX = bfs(self, x)
+    parY = bfs(self, Y)
+    console.log("hello")
     return lca
 
+
+#Use bfs to find all parents for x and y
 def bfs(graph, start):
     visited = []
     queue = [start]
     level = 0
     while queue:
         vertex = queue.pop(0)
-        for (var i = 0; i < vertex.links.length; i++)
-        {
-            node = vertex.linksFrom[i]
-            if node not in visited:
-            visited[i]= node
-            visited[i] = level
-            queue.append(node)
-        }
+        for i in vertex.linksFrom:
+            if i not in visited:
+                visited.append(i)
+                queue.append(i)
     return visited

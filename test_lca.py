@@ -115,7 +115,7 @@ def test_lcaFind6():
     n4.pointsTo(n8)
     n4.pointsTo(n9)
     n5.pointsTo(n10)
-    n5.pointssTo(n11)
+    n5.pointsTo(n11)
     n6.pointsTo(n12)
     assert lca.findLCA(n8, n10) == 2
 
@@ -161,7 +161,7 @@ def test_lcaFind8():
     n4.pointsTo(n8)
     n4.pointsTo(n9)
     n5.pointsTo(n10)
-    n5.pointssTo(n11)
+    n5.pointsTo(n11)
     n6.pointsTo(n12)
     assert lca.findLCA(n10, n2) == 2
 
