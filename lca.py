@@ -78,6 +78,8 @@ class DirectedGraph:
                 if i not in visited:
                     visited.append(i)
                     queue.append(i)
+
+        visited.append(start)
         return visited
 
     def common_elements(self, list1, list2):
