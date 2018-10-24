@@ -87,9 +87,9 @@ def test_lcaFind1():
     assert dg.findLCA(n2, n3) == 1
 
 
-#LCA test 3
+#LCA test 2
 #Testing findLCA with extra level tree
-def test_lcaFind3():
+def test_lcaFind2():
     dg = lca.DirectedGraph()
     n1 = dg.newNode(1)
     n2 = dg.newNode(2)
@@ -106,9 +106,9 @@ def test_lcaFind3():
     n3.pointsTo(n7)
     assert dg.findLCA(n5, n7) == 1
 
-#LCA test 4
+#LCA test 3
 #Testing with extra level tree
-def test_lcaFind6():
+def test_lcaFind3():
     dg = lca.DirectedGraph()
     n1 = dg.newNode(1)
     n2 = dg.newNode(2)
@@ -136,9 +136,9 @@ def test_lcaFind6():
     assert dg.findLCA(n8, n10) == 2
 
 
-#LCA test 5
+#LCA test 4
 #Testing where node is descendent of itself
-def test_lcaFind8():
+def test_lcaFind4():
     dg = lca.DirectedGraph()
     n1 = dg.newNode(1)
     n2 = dg.newNode(2)
@@ -165,9 +165,9 @@ def test_lcaFind8():
     n6.pointsTo(n12)
     assert dg.findLCA(n10, n2) == 2
 
-#LCA test 6
+#LCA test 5
 #Testing incest case where we try find the LCA using the same node for both parameters
-def test_lcaFind9():
+def test_lcaFind5():
     dg = lca.DirectedGraph()
     n1 = dg.newNode(1)
     n2 = dg.newNode(2)
@@ -175,3 +175,49 @@ def test_lcaFind9():
     n1.pointsTo(n3)
     n1.pointsTo(n2)
     assert dg.findLCA(n2, n2) == 2
+
+
+#LCA test 6
+#Testing with duplicate LCA
+#Implementation returns first found result if there are more than one possible LCA's
+def test_lcaFind6():
+    dg = lca.DirectedGraph()
+    n1 = dg.newNode(1)
+    n2 = dg.newNode(2)
+    n3 = dg.newNode(3)
+    n4 = dg.newNode(4)
+    n5 = dg.newNode(5)
+    n6 = dg.newNode(6)
+    n7 = dg.newNode(7)
+    n1.pointsTo(n2)
+    n1.pointsTo(n3)
+    n2.pointsTo(n4)
+    n3.pointsTo(n5)
+    n4.pointsTo(n6)
+    n4.pointsTo(n7)
+    n5.pointsTo(n6)
+    n5.pointsTo(n7)
+    assert dg.findLCA(n6, n7) == 4
+
+#LCA test 7
+#Testing when node has multiple parents
+def test_lcaFind7():
+    dg = lca.DirectedGraph()
+    n1 = dg.newNode(1)
+    n2 = dg.newNode(2)
+    n3 = dg.newNode(3)
+    n4 = dg.newNode(4)
+    n5 = dg.newNode(5)
+    n6 = dg.newNode(6)
+    n7 = dg.newNode(7)
+    n8 = dg.newNode(8)
+    n9 = dg.newNode(9)
+    n1.pointsTo(n2)
+    n1.pointsTo(n3)
+    n2.pointsTo(n4)
+    n2.pointsTo(n5)
+    n2.pointsTo(n6)
+    n4.pointsTo(n7)
+    n4.pointsTo(n8)
+    n4.pointsTo(n9)
+    assert dg.findLCA(n8, n5) == 2

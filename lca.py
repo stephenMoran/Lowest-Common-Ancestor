@@ -42,12 +42,8 @@ class DirectedGraph:
     def findLCA(self, x, y):
         #find list of ancestors of node X
         parX = self.bfs(x)
-        for i in parX:
-            print(i.data)
         #find list of ancestors of node Y
         parY = self.bfs(y)
-        for j in parY:
-            print(j.data)
         #List of common parent ancestors
         commonNodes = self.commonElements(parX, parY)
 
