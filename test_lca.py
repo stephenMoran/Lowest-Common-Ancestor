@@ -72,6 +72,17 @@ def test_common3():
     common = dg.commonElements(list1, list2)
     assert common == []
 
+#commonElements test 4
+#Testing with null arguements
+def test_common4():
+    dg = lca.DirectedGraph()
+
+    list1 = None
+    list2 = None
+
+    common = dg.commonElements(list1, list2)
+    assert common == []
+
 #**LCA FUNCTION TESTS**
 
 #LCA test 1
@@ -225,7 +236,7 @@ def test_lcaFind7():
 #LCA test 8
 #Testing with cyclic graph
 #We make assumption that user will only use Directed Acyclic graphs
-def test_lcaFind7():
+def test_lcaFind8():
     dg = lca.DirectedGraph()
     n1 = dg.newNode(1)
     n2 = dg.newNode(2)
@@ -236,3 +247,28 @@ def test_lcaFind7():
     n3.pointsTo(n4)
     n4.pointsTo(n1)
     assert dg.findLCA(n1, n2) == 1
+
+#LCA test 9
+#Testing when graph is disjoint and x and y have no common parent nodes
+def test_lcaFind9():
+    dg = lca.DirectedGraph()
+    n1 = dg.newNode(1)
+    n2 = dg.newNode(2)
+    n3 = dg.newNode(3)
+    n4 = dg.newNode(4)
+    n5 = dg.newNode(5)
+    n6 = dg.newNode(6)
+    n1.pointsTo(n2)
+    n1.pointsTo(n3)
+    n4.pointsTo(n5)
+    n4.pointsTo(n6)
+    assert dg.findLCA(n2, n6) == -1
+
+#LCA test 10
+#Testing when graph is disjoint and x and y have no common parent nodes
+def test_lcaFind10():
+    dg = lca.DirectedGraph()
+    n1 = None
+    n2 = None
+
+    assert dg.findLCA(n1, n2) == -1

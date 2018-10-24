@@ -40,7 +40,7 @@ class DirectedGraph:
     #Return - data held in LCA node
     #Will only give one answer even when there are two nodes that could be the LCA
     def findLCA(self, x, y):
-        if(x asnd y != None):
+        if(x is not None and y is not None):
             #find list of ancestors of node X
             parX = self.bfs(x)
             #find list of ancestors of node Y
@@ -62,8 +62,8 @@ class DirectedGraph:
                 return lca
             else:
                 return -1
-          else:
-              return  -1
+        else:
+            return  -1
 
 
     #Breadth First search to find all ancestors of a given node
@@ -87,7 +87,7 @@ class DirectedGraph:
     #Parameters - two lists of nodes
     #Return - List containing the intersection of the two lists
     def commonElements(self, list1, list2):
-        if(list1 and list2 != None):
+        if(list1 is not None and list2 is not None):
             return [element for element in list1 if element in list2]
         else:
             return []
