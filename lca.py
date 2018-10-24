@@ -1,5 +1,5 @@
 # Python Program to find the lowest common ancestor (LCA) of a directed acyclic graph
-
+#Assumption : If multiple LCA nodes, user wants any one of these ndodes and it doesn't matter which one
 
 #Class to represent a graph
 class DirectedGraph:
@@ -65,7 +65,7 @@ class DirectedGraph:
         else:
             return  -1
 
-s
+
     #Breadth First search to find all ancestors of a given node
     #Parameters - root node to begin the search from
     #Return - list of visited nodes

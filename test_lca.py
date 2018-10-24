@@ -276,7 +276,7 @@ def test_lcaFind10():
 #LCA test 11
 #Testing when nodes parents have multiple parents
 #Even though there are 3 possible parents, the program returns the first lca node encountered
-def test_lcaFind111():
+def test_lcaFind11():
     dg = lca.DirectedGraph()
     n1 = dg.newNode(1)
     n2 = dg.newNode(2)
