@@ -40,28 +40,30 @@ class DirectedGraph:
     #Return - data held in LCA node
     #Will only give one answer even when there are two nodes that could be the LCA
     def findLCA(self, x, y):
-        #find list of ancestors of node X
-        parX = self.bfs(x)
-        #find list of ancestors of node Y
-        parY = self.bfs(y)
-        #List of common parent ancestors
-        commonNodes = self.commonElements(parX, parY)
+        if(x asnd y != None):
+            #find list of ancestors of node X
+            parX = self.bfs(x)
+            #find list of ancestors of node Y
+            parY = self.bfs(y)
+            #List of common parent ancestors
+            commonNodes = self.commonElements(parX, parY)
 
-        if commonNodes != []:
-            maxDist = -1
-            lca = 0
-            for i in commonNodes:
-                print("\n")
-                print(i.data)
-                print(i.distToRoot)
-                #if new lca found, update
-                if i.distToRoot > maxDist:
-                    maxDist = i.distToRoot
-                    lca = i.data
-            return lca
-        else:
-            return -1
-
+            if commonNodes != []:
+                maxDist = -1
+                lca = 0
+                for i in commonNodes:
+                    print("\n")
+                    print(i.data)
+                    print(i.distToRoot)
+                    #if new lca found, update
+                    if i.distToRoot > maxDist:
+                        maxDist = i.distToRoot
+                        lca = i.data
+                return lca
+            else:
+                return -1
+          else:
+              return  -1
 
 
     #Breadth First search to find all ancestors of a given node
@@ -85,4 +87,7 @@ class DirectedGraph:
     #Parameters - two lists of nodes
     #Return - List containing the intersection of the two lists
     def commonElements(self, list1, list2):
-        return [element for element in list1 if element in list2]
+        if(list1 and list2 != None):
+            return [element for element in list1 if element in list2]
+        else:
+            return []
