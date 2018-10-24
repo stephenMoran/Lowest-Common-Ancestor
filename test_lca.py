@@ -61,7 +61,7 @@ def test_common2():
     common = dg.commonElements(list1, list2)
     assert common == []
 
-#commonElements test
+#commonElements test 3
 #Testing with empty lists
 def test_common3():
     dg = lca.DirectedGraph()

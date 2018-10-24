@@ -33,13 +33,6 @@ class DirectedGraph:
         self.nodes.append( node )
         self.nodeCount += 1
         return node
-    #visualisation of graph
-    def __repr__( self ):
-        result = ""
-        for node in self.nodes:
-            for link in node.linksTo:
-                result += "{0} --> {1} \n".format( node.data, link.data )
-        return result
 
 
     #find Lowest Common Ancestor function
