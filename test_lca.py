@@ -221,3 +221,18 @@ def test_lcaFind7():
     n4.pointsTo(n8)
     n4.pointsTo(n9)
     assert dg.findLCA(n8, n5) == 2
+
+#LCA test 8
+#Testing with cyclic graph
+#We make assumption that user will only use Directed Acyclic graphs
+def test_lcaFind7():
+    dg = lca.DirectedGraph()
+    n1 = dg.newNode(1)
+    n2 = dg.newNode(2)
+    n3 = dg.newNode(3)
+    n4 = dg.newNode(4)
+    n1.pointsTo(n2)
+    n2.pointsTo(n3)
+    n3.pointsTo(n4)
+    n4.pointsTo(n1)
+    assert dg.findLCA(n1, n2) == 1
