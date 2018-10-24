@@ -272,3 +272,29 @@ def test_lcaFind10():
     n2 = None
 
     assert dg.findLCA(n1, n2) == -1
+
+#LCA test 11
+#Testing when nodes parents have multiple parents
+#Even though there are 3 possible parents, the program returns the first lca node encountered
+def test_lcaFind111():
+    dg = lca.DirectedGraph()
+    n1 = dg.newNode(1)
+    n2 = dg.newNode(2)
+    n3 = dg.newNode(3)
+    n4 = dg.newNode(4)
+    n5 = dg.newNode(5)
+    n6 = dg.newNode(6)
+    n7 = dg.newNode(7)
+    n8 = dg.newNode(8)
+    n1.pointsTo(n2)
+    n1.pointsTo(n3)
+    n1.pointsTo(n8)
+    n2.pointsTo(n4)
+    n2.pointsTo(n5)
+    n3.pointsTo(n4)
+    n3.pointsTo(n5)
+    n8.pointsTo(n4)
+    n8.pointsTo(n5)
+    n4.pointsTo(n6)
+    n5.pointsTo(n7)
+    assert dg.findLCA(n6, n7) == 2
